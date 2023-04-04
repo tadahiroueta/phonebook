@@ -19,7 +19,7 @@ public class PhoneBook implements IMap {
     public PhoneBook(int size) { table = new Entry[size]; }
 
     public PhoneNumber put(Person key, PhoneNumber value) {
-        int hash = key.hashCode(table.length);
+        int hash = Math.abs(key.hashCode() % table.length);
         Entry node = table[hash];
 
         // empty slot
@@ -46,7 +46,7 @@ public class PhoneBook implements IMap {
     }}
 
     public PhoneNumber get(Person key) {
-        int hash = key.hashCode(table.length);
+        int hash = Math.abs(key.hashCode() % table.length);
         Entry node = table[hash];
        
         // empty slot
@@ -59,7 +59,7 @@ public class PhoneBook implements IMap {
     }}
 
     public PhoneNumber remove(Person key) { 
-        int hash = key.hashCode(table.length);
+        int hash = Math.abs(key.hashCode() % table.length);
         Entry node = table[hash];
 
         if (node == null) return null;
@@ -69,6 +69,7 @@ public class PhoneBook implements IMap {
             size--;
             return old;
         }
+        if (node.next == null) return null;
 
         while (true) {
             if (node.next.person.equals(key)) {

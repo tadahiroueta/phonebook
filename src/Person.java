@@ -3,7 +3,7 @@ public class Person {
 
     public Person(String name) { this.name = name; }
 
-    public int hashCode(int tableSize) { return name.hashCode() % tableSize; }
+    public int hashCode() { return name.hashCode(); }
 
     @Override
     public boolean equals(Object obj) {

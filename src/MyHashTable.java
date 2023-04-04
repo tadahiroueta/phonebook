@@ -19,7 +19,8 @@ public class MyHashTable<K, V> {
     public MyHashTable(int size) { table = new Object[size]; }
 
     public V put(K key, V value) {
-        int hash = key.hashCode() % table.length;
+        int hash = Math.abs(key.hashCode() % table.length);
+        @SuppressWarnings("unchecked")
         Entry node = (Entry) table[hash];
 
         // empty slot
@@ -46,7 +47,8 @@ public class MyHashTable<K, V> {
     }}
 
     public V get(K key) {
-        int hash = key.hashCode() % table.length;
+        int hash = Math.abs(key.hashCode() % table.length);
+        @SuppressWarnings("unchecked")
         Entry node = (Entry) table[hash];
        
         // empty slot
@@ -59,7 +61,8 @@ public class MyHashTable<K, V> {
     }}
 
     public V remove(K key) { 
-        int hash = key.hashCode() % table.length;
+        int hash = Math.abs(key.hashCode() % table.length);
+        @SuppressWarnings("unchecked")
         Entry node = (Entry) table[hash];
 
         if (node == null) return null;
@@ -69,6 +72,7 @@ public class MyHashTable<K, V> {
             size--;
             return old;
         }
+        if (node.next == null) return null;
 
         while (true) {
             if (node.next.key.equals(key)) {
@@ -88,6 +92,7 @@ public class MyHashTable<K, V> {
         // print table
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < table.length; i++) {
+            @SuppressWarnings("unchecked")
             Entry node = (Entry) table[i];
             while (node != null) {
                 sb.append(node.key).append(":").append(node.value).append(", ");

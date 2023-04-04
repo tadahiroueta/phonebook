@@ -50,6 +50,39 @@ public class MyHashTable<K, V> {
             node = node.next;
     }}
 
+    /** Returns number of collisions */
+    public int putWithCollision(K key, V value) {
+        int hash = Math.abs(key.hashCode() % table.length);
+        @SuppressWarnings("unchecked")
+        Entry node = (Entry) table[hash];
+        int collisionCounter = 0;
+
+        // empty slot
+        if (node == null) {
+            table[hash] = new Entry(key, value);
+            size++;
+            return collisionCounter;
+        }
+
+        while (true) {
+            // update
+            if (node.key.equals(key)) {
+                V old = node.value;
+                node.value = value;
+                return collisionCounter;
+            }
+
+            collisionCounter++;
+
+            // end of chain
+            if (node.next == null) {
+                node.next = new Entry(key, value);
+                size++;
+                return collisionCounter;
+            }
+            node = node.next;
+    }}
+
     public V get(K key) {
         int hash = Math.abs(key.hashCode() % table.length);
         @SuppressWarnings("unchecked")
@@ -61,6 +94,24 @@ public class MyHashTable<K, V> {
         while (true) {
             if (node.key.equals(key)) return node.value; // found
             if (node.next == null) return null; // end of chain
+            node = node.next;
+    }}
+
+    /** Returns number of probes - nodes checked */
+    public int getWithProbes(K key) {
+        int hash = Math.abs(key.hashCode() % table.length);
+        @SuppressWarnings("unchecked")
+        Entry node = (Entry) table[hash];
+        int probeCounter = 1;
+       
+        // empty slot
+        if (node == null) return probeCounter;
+        
+        while (true) {
+            if (node.key.equals(key)) return probeCounter; // found
+            probeCounter++;
+
+            if (node.next == null) return probeCounter; // end of chain
             node = node.next;
     }}
 
@@ -86,6 +137,37 @@ public class MyHashTable<K, V> {
                 return old;
             }
             if (node.next.next == null) return null;
+            node = node.next;
+    }}
+
+    /** Returns number of collisions */
+    public int removeWithCollision(K key) { 
+        int hash = Math.abs(key.hashCode() % table.length);
+        @SuppressWarnings("unchecked")
+        Entry node = (Entry) table[hash];
+        int collisionCounter = 0;
+
+        if (node == null) return collisionCounter;
+        if (node.key.equals(key)) {
+            V old = node.value;
+            table[hash] = node.next;
+            size--;
+            return collisionCounter;
+        }
+
+        collisionCounter++;
+        if (node.next == null) return collisionCounter;
+
+        while (true) {
+            if (node.next.key.equals(key)) {
+                V old = node.next.value;
+                node.next = node.next.next;
+                size--;
+                return collisionCounter;
+            }
+            collisionCounter++;
+            
+            if (node.next.next == null) return collisionCounter;
             node = node.next;
     }}
 

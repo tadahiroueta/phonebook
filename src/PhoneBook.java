@@ -10,13 +10,17 @@ public class PhoneBook implements IMap {
             this.phoneNumber = phone;
     }}
 
-    protected static final int TABLE_SIZE = 100;
+    private int tableSize = 100;
 
-    private Entry[] table = new Entry[TABLE_SIZE];
+    private Entry[] table = new Entry[tableSize];
     private int size = 0;
 
     public PhoneBook() {}
-    public PhoneBook(int size) { table = new Entry[size]; }
+    
+    public PhoneBook(int tableSize) { 
+        this.tableSize = tableSize;
+        table = new Entry[tableSize];
+    }
 
     public PhoneNumber put(Person key, PhoneNumber value) {
         int hash = Math.abs(key.hashCode() % table.length);

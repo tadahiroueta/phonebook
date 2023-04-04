@@ -10,13 +10,17 @@ public class MyHashTable<K, V> {
             this.value = phone;
     }}
 
-    protected static final int TABLE_SIZE = 100;
+    private int tableSize = 100;
 
-    private Object[] table = new Object[TABLE_SIZE];
+    private Object[] table = new Object[tableSize];
     private int size = 0;
 
     public MyHashTable() {}
-    public MyHashTable(int size) { table = new Object[size]; }
+
+    public MyHashTable(int tableSize) {
+        this.tableSize = tableSize; 
+        table = new Object[tableSize];
+    }
 
     public V put(K key, V value) {
         int hash = Math.abs(key.hashCode() % table.length);

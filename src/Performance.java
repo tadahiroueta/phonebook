@@ -88,7 +88,7 @@ public class Performance {
             set.length, 
             tableSize, 
             loadFactor, 
-            buildTime / set.length, 
+            (double) buildTime / set.length, 
             collisionCounter, 
             100 * (double) collisionCounter / set.length,
             (double) successfulSearchTime / successfulSearches.length,

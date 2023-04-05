@@ -5,7 +5,7 @@
     Table size: 66666
     Load factor: 0.75
 
-    Average insertion time: 0 ms
+    Average insertion time: 1.2E-4 ms
     Insertion collisions: 14914
     Collisions per insertion: 29.828%
 

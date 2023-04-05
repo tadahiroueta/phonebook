@@ -1,0 +1,60 @@
+    Hash type: Open hashing
+    Hash function: Default string hashcode
+
+    Records: 50000
+    Table size: 100000
+    Load factor: 0.5
+
+    Average insertion time: 2.0E-4 ms
+    Insertion collisions: 10146
+    Collisions per insertion: 20.292%
+
+    Average time for successful searches: 0.0 ms
+    Probes per successful search: 1.192
+
+    Average time for unsuccessful searches: 0.001 ms
+    Probes per unsuccessful search: 1.409
+
+
+
+
+    Hash type: Open hashing
+    Hash function: Default string hashcode
+
+    Records: 50000
+    Table size: 66666
+    Load factor: 0.75
+
+    Average insertion time: 1.4E-4 ms
+    Insertion collisions: 14914
+    Collisions per insertion: 29.828%
+
+    Average time for successful searches: 0.001 ms
+    Probes per successful search: 1.311
+
+    Average time for unsuccessful searches: 0.0 ms
+    Probes per unsuccessful search: 1.615
+
+
+
+
+    Hash type: Open hashing
+    Hash function: Default string hashcode
+
+    Records: 50000
+    Table size: 55555
+    Load factor: 0.9
+
+    Average insertion time: 1.0E-4 ms
+    Insertion collisions: 21351
+    Collisions per insertion: 42.702%
+
+    Average time for successful searches: 0.0 ms
+    Probes per successful search: 1.43
+
+    Average time for unsuccessful searches: 0.0 ms
+    Probes per unsuccessful search: 1.831
+
+
+
+

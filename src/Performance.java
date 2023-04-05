@@ -42,7 +42,7 @@ public class Performance {
         return list.toArray(new Pair[list.size()]);
     }
 
-    public void testHashMap(double loadFactor) {
+    private String getReport(double loadFactor) {
         int tableSize = (int) (set.length / loadFactor),
             collisionCounter = 0, successfulProbeCounter = 0, unsuccessfulProbeCounter = 0;
         MyHashTable<String, String> map = new MyHashTable<>((int) (set.length / loadFactor));
@@ -58,15 +58,8 @@ public class Performance {
         startTime = System.currentTimeMillis();
         for (Pair<String, String> pair : unsuccessfulSearches) unsuccessfulProbeCounter += map.getWithProbes(pair.key);
         long unsuccessfulSearchTime = System.currentTimeMillis() - startTime;
-
-        PrintWriter out;
-        try { out = new PrintWriter(new File("report-map-" + loadFactor + ".txt")); }
-        catch (FileNotFoundException e) {
-            System.out.println("Error creating file for record."); 
-            return; 
-        }
         
-        out.println(String.format(
+        return String.format(
             """
                 Hash type: Open hashing
                 Hash function: Default string hashcode
@@ -84,6 +77,9 @@ public class Performance {
                 
                 Average time for unsuccessful searches: %s ms
                 Probes per unsuccessful search: %s
+
+
+
             """, 
             set.length, 
             tableSize, 
@@ -95,14 +91,22 @@ public class Performance {
             (double) successfulProbeCounter / successfulSearches.length,
             (double) unsuccessfulSearchTime / unsuccessfulSearches.length,
             (double) unsuccessfulProbeCounter / unsuccessfulSearches.length
-        ));
-        out.close();
+        );
     }
 
+    public void saveReports(double[] loadFactors) {        
+        PrintWriter out;
+        try { out = new PrintWriter(new File("report.txt")); }
+        catch (FileNotFoundException e) {
+            System.out.println("Error creating file for record."); 
+            return; 
+        }
+
+        for (double loadFactor : loadFactors) out.println(getReport(loadFactor));
+        out.close();
+    }    
+
     public static void main(String[] args) {
-        Performance performance = new Performance();
-        performance.testHashMap(0.5);
-        performance.testHashMap(0.75);
-        performance.testHashMap(0.9);
+        new Performance().saveReports(new double[] { 0.5, 0.75, 0.9 });
     }
 }

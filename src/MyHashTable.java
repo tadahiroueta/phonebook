@@ -1,4 +1,4 @@
-public class MyHashTable<K, V> {
+public class MyHashTable<K, V> implements Measurable<K, V> {
 
     class Entry {
         K key;
@@ -22,6 +22,9 @@ public class MyHashTable<K, V> {
         table = new Object[tableSize];
     }
 
+    public int size() { return size; }
+
+    @Override
     public V put(K key, V value) {
         int hash = Math.abs(key.hashCode() % table.length);
         @SuppressWarnings("unchecked")
@@ -149,7 +152,6 @@ public class MyHashTable<K, V> {
 
         if (node == null) return collisionCounter;
         if (node.key.equals(key)) {
-            V old = node.value;
             table[hash] = node.next;
             size--;
             return collisionCounter;
@@ -160,7 +162,6 @@ public class MyHashTable<K, V> {
 
         while (true) {
             if (node.next.key.equals(key)) {
-                V old = node.next.value;
                 node.next = node.next.next;
                 size--;
                 return collisionCounter;
@@ -170,8 +171,6 @@ public class MyHashTable<K, V> {
             if (node.next.next == null) return collisionCounter;
             node = node.next;
     }}
-
-    public int size() { return size; }
 
     @Override
     public String toString() {

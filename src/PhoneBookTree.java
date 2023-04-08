@@ -13,6 +13,7 @@ public class PhoneBookTree<K extends Comparable<K>, V> implements Measurable<K, 
     private Entry root = null;
     private int size = 0;
     
+    @Override
     public int size() { return size; }
 
     private V put(Entry node, K key, V value) {
@@ -38,6 +39,7 @@ public class PhoneBookTree<K extends Comparable<K>, V> implements Measurable<K, 
         return put(node.right, key, value);
     }
 
+    @Override
     public V put(K key, V value) {
         if (root == null) {
             root = new Entry(key, value);
@@ -69,6 +71,7 @@ public class PhoneBookTree<K extends Comparable<K>, V> implements Measurable<K, 
         return 1 + putWithCollision(node.right, key, value);
     }
 
+    @Override
     public int putWithCollision(K key, V value) {
         if (root == null) {
             root = new Entry(key, value);
@@ -78,6 +81,7 @@ public class PhoneBookTree<K extends Comparable<K>, V> implements Measurable<K, 
         return putWithCollision(root, key, value);
     }
 
+    @Override
     public V get(K key) {
         Entry node = root;
         while (node != null) {
@@ -88,6 +92,7 @@ public class PhoneBookTree<K extends Comparable<K>, V> implements Measurable<K, 
         return null;
     }
 
+    @Override
     public int getWithProbes(K key) {
         Entry node = root;
         int probeCounter = 1;
@@ -100,6 +105,7 @@ public class PhoneBookTree<K extends Comparable<K>, V> implements Measurable<K, 
         return probeCounter;
     }
 
+    @Override
     public V remove(K key) {
         Entry node = root;
         Entry parent = null;
@@ -146,6 +152,7 @@ public class PhoneBookTree<K extends Comparable<K>, V> implements Measurable<K, 
         return null;
     }
 
+    @Override
     public int removeWithCollision(K key) {
         Entry node = root;
         Entry parent = null;

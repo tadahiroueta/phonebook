@@ -10,18 +10,19 @@ public class MyHashTable<K, V> implements Measurable<K, V> {
             this.value = phone;
     }}
 
-    private int tableSize = 100;
+    private int bucketNumber = 100;
 
-    private Object[] table = new Object[tableSize];
+    private Object[] table = new Object[bucketNumber];
     private int size = 0;
 
     public MyHashTable() {}
 
     public MyHashTable(int tableSize) {
-        this.tableSize = tableSize; 
+        this.bucketNumber = tableSize; 
         table = new Object[tableSize];
     }
 
+    @Override
     public int size() { return size; }
 
     @Override
@@ -54,6 +55,7 @@ public class MyHashTable<K, V> implements Measurable<K, V> {
     }}
 
     /** Returns number of collisions */
+    @Override
     public int putWithCollision(K key, V value) {
         int hash = Math.abs(key.hashCode() % table.length);
         @SuppressWarnings("unchecked")
@@ -86,6 +88,7 @@ public class MyHashTable<K, V> implements Measurable<K, V> {
             node = node.next;
     }}
 
+    @Override
     public V get(K key) {
         int hash = Math.abs(key.hashCode() % table.length);
         @SuppressWarnings("unchecked")
@@ -101,6 +104,7 @@ public class MyHashTable<K, V> implements Measurable<K, V> {
     }}
 
     /** Returns number of probes - nodes checked */
+    @Override
     public int getWithProbes(K key) {
         int hash = Math.abs(key.hashCode() % table.length);
         @SuppressWarnings("unchecked")
@@ -118,6 +122,7 @@ public class MyHashTable<K, V> implements Measurable<K, V> {
             node = node.next;
     }}
 
+    @Override
     public V remove(K key) { 
         int hash = Math.abs(key.hashCode() % table.length);
         @SuppressWarnings("unchecked")
@@ -144,6 +149,7 @@ public class MyHashTable<K, V> implements Measurable<K, V> {
     }}
 
     /** Returns number of collisions */
+    @Override
     public int removeWithCollision(K key) { 
         int hash = Math.abs(key.hashCode() % table.length);
         @SuppressWarnings("unchecked")

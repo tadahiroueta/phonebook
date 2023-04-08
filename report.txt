@@ -5,12 +5,12 @@
     Table size: 100000
     Load factor: 0.5
 
-    Average insertion time: 2.0E-4 ms
+    Average insertion time: 3.2E-4 ms
     Insertion collisions: 10146
     Collisions per insertion: 20.292%
 
     Average time for successful searches: 0.0 ms
-    Probes per successful search: 1.192
+    Probes per successful search: 1.183
 
     Average time for unsuccessful searches: 0.001 ms
     Probes per unsuccessful search: 1.409
@@ -25,12 +25,12 @@
     Table size: 66666
     Load factor: 0.75
 
-    Average insertion time: 1.4E-4 ms
+    Average insertion time: 2.4E-4 ms
     Insertion collisions: 14914
     Collisions per insertion: 29.828%
 
     Average time for successful searches: 0.001 ms
-    Probes per successful search: 1.311
+    Probes per successful search: 1.289
 
     Average time for unsuccessful searches: 0.0 ms
     Probes per unsuccessful search: 1.615
@@ -45,15 +45,93 @@
     Table size: 55555
     Load factor: 0.9
 
-    Average insertion time: 1.0E-4 ms
+    Average insertion time: 2.4E-4 ms
     Insertion collisions: 21351
     Collisions per insertion: 42.702%
 
-    Average time for successful searches: 0.0 ms
-    Probes per successful search: 1.43
+    Average time for successful searches: 0.001 ms
+    Probes per successful search: 1.423
 
     Average time for unsuccessful searches: 0.0 ms
     Probes per unsuccessful search: 1.831
+
+
+
+
+    Data structure: Binary search tree
+    Compare to function: Default string compare to
+
+    Records: 50000
+
+    Average insertion time: 0.00126 ms
+    Insertion collisions: 924667
+    Collisions per insertion: 1849.334%
+
+    Average time for successful searches: 0.001 ms
+    Probes per successful search: 19.413
+
+    Average time for unsuccessful searches: 0.001 ms
+    Probes per unsuccessful search: 21.765
+
+
+
+
+    Data structure: Hash table with binary search trees
+    Compare to function: Default string compare to
+
+    Records: 50000
+    Table size: 100000
+    Load factor: 0.5
+
+    Average insertion time: 2.0E-4 ms
+    Insertion collisions: 9881
+    Collisions per insertion: 19.762%
+
+    Average time for successful searches: 0.001 ms
+    Probes per successful search: 1.18
+
+    Average time for unsuccessful searches: 0.001 ms
+    Probes per unsuccessful search: 0.759
+
+
+
+
+    Data structure: Hash table with binary search trees
+    Compare to function: Default string compare to
+
+    Records: 50000
+    Table size: 66666
+    Load factor: 0.75
+
+    Average insertion time: 2.2E-4 ms
+    Insertion collisions: 14268
+    Collisions per insertion: 28.536%
+
+    Average time for successful searches: 0.0 ms
+    Probes per successful search: 1.279
+
+    Average time for unsuccessful searches: 0.0 ms
+    Probes per unsuccessful search: 1.079
+
+
+
+
+    Data structure: Hash table with binary search trees
+    Compare to function: Default string compare to
+
+    Records: 50000
+    Table size: 55555
+    Load factor: 0.9
+
+    Average insertion time: 2.4E-4 ms
+    Insertion collisions: 19857
+    Collisions per insertion: 39.714%
+
+    Average time for successful searches: 0.0 ms
+    Probes per successful search: 1.387
+
+    Average time for unsuccessful searches: 0.001 ms
+    Probes per unsuccessful search: 1.314
 
 
 
